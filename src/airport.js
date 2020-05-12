@@ -8,4 +8,7 @@ class Airport {
   clearForLanding(plane) {
     return this._all_planes.push(plane);
   }
+  clearForTakeoff(plane) {
+    this._all_planes.pop();
+  }
 }
