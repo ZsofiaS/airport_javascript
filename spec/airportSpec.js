@@ -1,27 +1,18 @@
+'use strict';
+
 describe('Airport', function() {
   var airport;
   var plane;
 
   beforeEach(function() {
-    airport = new Airport;
-    plane = new Plane;
+    airport = new Airport();
+    plane = jasmine.createSpy('plane', ['land']);
   })
-
-  it('shows planes in airport', function() {
-    airport.land(plane)
-    expect(airport.planes).toContain(plane)
+  it('has no planes by default', function() {
+    expect(airport.planes()).toEqual([]);
   })
-
-  describe('#land', function() {
-    it('lands planes', function() {
-      expect(airport.land(plane)).toEqual([plane])
-    })
-  })
-
-  describe('#takeoff', function() {
-    it('instructs planes to take off', function() {
-      airport.land(plane)
-      expect(airport.takeoff(plane)).toEqual(plane)
-    })
+  it('can instruct a plane to land', function() {
+    airport.clearForLanding(plane);
+    expect(airport.planes()).toEqual([plane]);
   })
 })

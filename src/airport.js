@@ -1,13 +1,11 @@
 class Airport {
   constructor() {
-    this.planes = [];
+    this._all_planes = [];
   }
-
-  land(plane) {
-    this.planes.push(plane);
-    return this.planes;
+  planes() {
+    return this._all_planes;
   }
-  takeoff(plane) {
-    return plane
+  clearForLanding(plane) {
+    return this._all_planes.push(plane);
   }
 }
