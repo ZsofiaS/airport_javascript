@@ -29,5 +29,9 @@ describe('Airport', function() {
       spyOn(airport, 'isStormy').and.returnValue(true);
       expect(function() { airport.clearForTakeoff(plane); }).toThrowError('cannot take off');
     })
+    it('does not allow planes to land', function() {
+      spyOn(airport, 'isStormy').and.returnValue(true);
+      expect(function() { airport.clearForLanding(plane);}).toThrowError('cannot land');
+    })
   })
 })

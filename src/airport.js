@@ -6,6 +6,9 @@ class Airport {
     return this._all_planes;
   }
   clearForLanding(plane) {
+    if (this.isStormy()) {
+      throw new Error('cannot land');
+    }
     return this._all_planes.push(plane);
   }
   clearForTakeoff(plane) {
