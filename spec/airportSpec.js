@@ -3,6 +3,7 @@
 describe('Airport', function() {
   var airport;
   var plane;
+  var plane2;
 
   beforeEach(function() {
     airport = new Airport();
@@ -19,5 +20,14 @@ describe('Airport', function() {
     airport.clearForLanding(plane);
     airport.clearForTakeoff(plane);
     expect(airport.planes()).toEqual([]);
+  })
+  it('can check for bad weather', function() {
+    expect(airport.isStormy()).toBeFalsy();
+  })
+  describe('in bad weather', function() {
+    it('does not allow planes to takeoff', function() {
+      spyOn(airport, 'isStormy').and.returnValue(true);
+      expect(function() { airport.clearForTakeoff(plane); }).toThrowError('cannot take off');
+    })
   })
 })

@@ -9,6 +9,12 @@ class Airport {
     return this._all_planes.push(plane);
   }
   clearForTakeoff(plane) {
-    this._all_planes.pop();
+    if (this.isStormy()) {
+      throw new Error('cannot take off');
+    }
+    this._all_planes = [];
+  }
+  isStormy() {
+    return false;
   }
 }
