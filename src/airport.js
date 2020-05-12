@@ -1,23 +1,23 @@
 class Airport {
-  constructor() {
+  constructor(weather) {
+    this._weather = typeof weather !== 'undefined' ? weather : new Weather();
     this._all_planes = [];
   }
   planes() {
     return this._all_planes;
   }
   clearForLanding(plane) {
-    if (this.isStormy()) {
+    if (this._weather.isStormy()) {
       throw new Error('cannot land');
     }
-    return this._all_planes.push(plane);
+    this._all_planes.push(plane);
   }
   clearForTakeoff(plane) {
-    if (this.isStormy()) {
+    if (this._weather.isStormy()) {
       throw new Error('cannot take off');
     }
     this._all_planes = [];
   }
-  isStormy() {
-    return false;
-  }
+
+
 }
