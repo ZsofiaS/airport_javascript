@@ -18,6 +18,4 @@ class Airport {
     }
     this._all_planes = [];
   }
-
-
 }
